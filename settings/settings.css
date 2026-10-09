@@ -1,0 +1,321 @@
+:root {
+	--clr-background: black;
+	--clr-accent: white;
+	/* --- */
+	--border: 2px solid var(--clr-accent);
+}
+
+/* --- */
+
+body {
+	background-color: var(--clr-background);
+	height: 100%;
+	margin: 0;
+}
+
+#incognitoBanner {
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	border-bottom: var(--border);
+	margin-bottom: 1vh;
+	color: var(--clr-accent);
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	font-size: 1vw;
+}
+
+
+/* --- | This is only for the "Settings" title */
+h1 {
+	font-size: max(8vh,4vw);
+	color: var(--clr-accent);
+	margin: 0;
+	margin-bottom: 3vh;
+}
+
+/* --- */
+
+/* This is the one that holds all settings boxes */
+.settingsContainer {
+	gap: 5vh;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	border: var(--border);
+	min-width: 300px;
+	width: 33vw;
+	padding: 2vmin;
+	gap: 1.5vh;
+}
+
+/* Section title */
+section::before {
+	position: absolute;
+	/* Hard coded RELATIVE position for section titles */
+	margin-top: -5vh;
+	margin-left: -0.3vw;
+	padding-left: 0.3vw;
+	padding-right: 0.3vw;
+	background-color: var(--clr-background)	;
+	color: var(--clr-accent);
+	/* This actually sets the title */
+	content: attr(sectionTitle);
+	font-size: 20pt;
+	text-align: left;
+	font-family: monospace;
+}
+
+/* Size for nested sections (dont go further than 2 pls) */
+section > section {
+	width: 30.5vw;
+	min-width: 275px;
+	margin-top: 2vh;
+}
+
+/* --- */
+
+/* all labels */
+h2 {
+	color: var(--clr-accent);
+	margin: 0;
+	font-family: monospace;
+	font-size: 1.3vw;
+}
+
+/* --- */
+
+/* This is how you style the multi box selection option thingy */
+option {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+}
+
+/* --- | Select dropdown */
+
+select {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+	height: 25px;
+	width: 98%;
+	transition: 100ms;
+	font-family: monospace;
+	font-size: 1vw;
+}
+
+/* --- | Help text */
+
+.helpText {
+	color: var(--clr-accent);
+	font-size: 1vw;
+	margin: 0;
+	font-family: monospace;
+}
+
+
+/* --- | Checkbox */
+
+input[type="checkbox"] {
+	background-color: var(--clr-background);
+	border: var(--border);
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	aspect-ratio: 1;
+	position: relative;
+	cursor: pointer;
+	transition: 100ms;
+	margin-right: 0.5vw;
+}
+
+/* Custom enabled state */
+input[type="checkbox"]:checked::after {
+	content: "✔";
+	color: var(--clr-accent);
+	font-size: 23px;
+	position: absolute;
+	/* top: 9px;
+	left: 10px; */
+	transform: translate(10%, -20%);
+}
+
+/* states */
+input[type="checkbox"]:hover, input[type="checkbox"]:focus-visible {
+	scale: 1.15;
+	outline: none;
+}
+
+
+/* --- | Text input */
+input[type="text"], input[type="password"] {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+	height: 25px;
+	width: 98%;
+	transition: 100ms;
+}
+
+/* states */
+input[type="text"]:hover, input[type="text"]:focus-visible,
+input[type="password"]:hover, input[type="password"]:focus-visible {
+	scale: 1.02;
+	outline: none;
+}
+
+/* --- | Text area */
+textarea {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	font-family: monospace;
+	font-size: 15pt;
+	resize: none;
+	border: var(--border);
+	overflow: visible;
+	width: 98%;
+}
+
+/* states */
+textarea:hover, textarea:focus-visible {
+	scale: 1.02;
+	outline: none;
+}
+
+/* --- | Custom number input */
+/* SO to https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+	height: 25px;
+	width: 9vw;
+	transition: 100ms;
+	text-align: center;
+	font-family: monospace;
+	font-size: 1vw;
+	appearance: textfield; /* Standard */
+	-moz-appearance: textfield; /* Firefox */
+}
+
+.minus, .plus {
+	font-size: 1.3vw;
+	position: absolute;
+	height: 27px;
+	width: 27px;
+	background-color: transparent;
+	color: var(--clr-accent);
+	text-align: center;
+	border: none;
+	cursor: pointer;
+	/* if the actual number input gets focus it shoves itself infront of the buttons */
+	z-index: 2;
+}
+
+.minus {
+	font-size: 1.5vw;
+	transform: translateX(20%) translateY(-8%)
+}
+
+.plus {
+	transform: translateX(410%)
+}
+
+/* states */
+
+input[type=number]:hover, input[type=number]:focus-visible {
+	scale: 1.02;
+	outline: none;
+}
+
+.minus:hover, .minus:focus-visible, .plus:hover, .plus:focus-visible {
+	text-decoration: underline;
+	outline: none;
+}
+
+.minus:active, .plus:active {
+	text-decoration: none;
+}
+
+/* --- */
+
+footer {
+	position: sticky;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5vw;
+	width: 100%;
+	height: fit-content;
+	padding-bottom: 2vh;
+	padding-top: 2vh;
+	left: 0;
+	bottom: 0;
+	backdrop-filter: brightness(0%);
+	z-index: 999;
+}
+
+#save,#reset,#regenSecret {
+	height: 30px;
+	scale: 1.4;
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+	transition: 100ms;
+}
+
+#reset {
+	border-color: red;
+}
+
+#regenSecret {
+	scale: 1.0;
+}
+
+#regenSecret:active {
+	scale: 1.15;
+}
+
+#regenSecret:hover, #regenSecret:focus-visible {
+	scale: 1.1;
+	outline: none;
+}
+
+/* states */
+#save:hover, #save:focus-visible,
+#reset:hover, #reset:focus-visible {
+	scale: 1.5;
+	outline: none;
+}
+
+#save:active,
+#reset:active {
+	scale: 1.3;
+}
+
+
+/* --- | utility flex classes for in section management */
+
+.flex-side-side {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	width: 100%;
+}
+
+.flex-top-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LesserPass</title>
+		<link rel="stylesheet" href="popup.css">
+		<script src="popup.js" defer></script>
+	</head>
+	<body>
+		<!-- Overlay -->
+		<div id="copiedOverlay" class="overlay hidden flex-top-bottom nslct">
+			<h1>Copied!</h1>
+		</div>
+		<!-- Title Section -->
+		<div class="header flex-side-side nslct">
+			<img src="../assets/icon.svg"
+				alt="A key with a striked through eye in its bow."
+				>
+			<h2>LesserPass</h2>
+		</div>
+		<div class="funcToggle">
+			<input id="tabSwitcher" type="checkbox"/>
+			<label></label>
+		</div>
+		<div id="passTab" class="userInputsContainer flex-top-bottom">
+			<input placeholder="Site" id="site" type="text" >
+			<input placeholder="Login" id="login" type="text" >
+			<div class="passwordEntry flex-side-side">
+				<input  placeholder="Master Password" id="masterpw" type="password">
+				<ol class="passMojiContainer flex-side-side nslct">
+					<li class="emoji monoMoji">-</li>
+					<li class="emoji monoMoji">-</li>
+					<li class="emoji monoMoji">-</li>
+				</ol>
+			</div>
+			<div class="quickSettingsContainer flex-side-side">
+				<div class="numberSettingContainer">
+					<button class="numberInputButton minus" id="minusLength">-</button>
+					<input id="LengthInput" type="number" min="1" placeholder="Length">
+					<button class="numberInputButton plus" id="plusLength">+</button>
+				</div>
+				<div class="numberSettingContainer">
+					<button class="numberInputButton minus" id="minusIndex">-</button>
+					<input id="IndexInput" type="number" min="1" placeholder="Index">
+					<button class="numberInputButton plus" id="plusIndex">+</button>
+				</div>
+
+				<details class="quickFilters">
+					<summary>
+						Open filters
+					</summary>
+					<div class="filterContainer flex-side-side">
+						<div class="flex-top-bottom">
+							<h3 class="filterLabel">a-z</h3>
+							<input type="checkbox" class="ctm-checkbox" id="filterLowers" checked></div>
+						<div class="flex-top-bottom">
+							<h3 class="filterLabel">A-Z</h3>
+							<input type="checkbox" class="ctm-checkbox" id="filterCaps" checked></div>
+						<div class="flex-top-bottom">
+							<h3 class="filterLabel">0-9</h3>
+							<input type="checkbox" class="ctm-checkbox" id="filterNumbers" checked></div>
+						<div class="flex-top-bottom">
+							<h3 class="filterLabel">!$?</h3>
+							<input type="checkbox" class="ctm-checkbox" id="filterSymbols" checked></div>
+					</div>
+				</details>
+			</div>
+			<div class="outputContainer flex-side-side">
+				<input title="Click to copy" id="output" type="password" readonly>
+				<button id="toggleView" class="flex-top-bottom">
+					<img id="toggleViewImage" src="../assets/icons/eye.svg" alt="Toggle View">
+				</button>
+			</div>
+		</div>
+		<div id="mfaTab" class="flex-top-bottom hideThisTab">
+			<h3>HEY!</h3>
+		</div>
+		<div class="footer flex-side-side">
+			<a href="../settings/settings.html" target="_blank">Settings</a>
+			<a id="version" href="../changelog/changelog.html" target="_blank">v</a>
+			<a href="https://github.com/Xeimyn/LesserPass" target="_blank">Source</a>
+			<!-- <a href="" class="bottomLink">Placeholder</a> -->
+		</div>
+	</body>
+	</html>

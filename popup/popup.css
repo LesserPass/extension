@@ -1,0 +1,452 @@
+:root {
+	--window-width: 250px;
+	--window-height: 320px;
+	/* --- */
+	--clr-background: black;
+	--clr-accent: white;
+	/* --- */
+	--title-size: 28pt;
+	--border: 2px solid var(--clr-accent);
+	--overlay-transparency: 0.7
+}
+
+/* --- General window styling */
+
+html {
+	width: var(--window-width);
+	height: var(--window-heighth);
+}
+
+body {
+	margin: 0;
+	background-color: var(--clr-background);
+	border: var(--border)
+}
+
+.hideThisTab {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+/* --- Overlay */
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: hsla(0, 0%, 0%, var(--overlay-transparency));
+	/* Always on top */
+	z-index: 999;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.overlay > h1 {
+	color:var(--clr-accent);
+	font-size: 18vw;
+}
+
+
+/* --- Header */
+
+.header {
+	width: 100%;
+	height: 20%;
+	gap: 3vw;
+	padding-top: 4vw;
+	padding-bottom: 4vw;
+}
+
+.header > img {
+	height: calc(var(--title-size) + 5px);
+	margin: 0;
+
+	/* This is a sin but it looks so much better */
+	transform: translateY(2px);
+}
+
+.header > h2 {
+	font-size: var(--title-size);
+	color: var(--clr-accent);
+	margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+.funcToggle {
+	position: relative;
+	height: 27px;
+	display: flex;
+	/* align-items: center; */
+	width: 82%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: var(--border);
+	margin-bottom: 4vw;
+}
+.funcToggle input[type="checkbox"] {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  margin: 0;
+  opacity: 0;
+}
+.funcToggle label {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+    transition: .15s linear;
+
+	box-shadow: inset -40vw 0px 0 0px white;
+
+}
+.funcToggle label:before  , .funcToggle label:after {
+  font-size: 19px;
+  font-weight: bold;
+  font-family:arial;
+  transition: 0.2s ease-in;
+  box-sizing:border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.funcToggle label:before {
+
+	content: "PASS";
+	color: white;
+	height: 27px;
+	width: 50%;
+	display: inline-flex;
+}
+
+
+.funcToggle label:after {
+  content: "2FA";
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  line-height: 27px;
+  color: black;
+}
+
+.funcToggle input[type="checkbox"]:checked + label {
+    box-shadow: inset 40vw 0px 0 0px white;
+}
+
+.funcToggle input[type="checkbox"]:checked + label:before {
+	color: black;
+}
+.funcToggle input[type="checkbox"]:checked + label:after {
+	color: white;
+}
+
+
+
+
+/* User inputs */
+
+/* General styling */
+input[type="text"],input[type="password"],input[type="number"] {
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+}
+
+.userInputsContainer {
+	gap: 4vw;
+}
+
+.userInputsContainer > input[type="text"] {
+	height: 25px;
+	width: 80%;
+	transition: 100ms;
+}
+
+.passwordEntry {
+	width: 82%;
+}
+
+.passwordEntry > input[type="password"],
+.passwordEntry > input[type="text"] {
+	height: 25px;
+	width: 82%;
+	transition: 100ms;
+}
+
+/* --- Password feedback (emojis) */
+
+.passMojiContainer {
+	margin: 0;
+	padding: 0;
+	height: 27px;
+	width: 90px;
+	gap: 1vw;
+	border: var(--border);
+	border-left: 0;
+	/* Indicate the hidden feature that clicking will toggle masterpw visibillity */
+	/* TODO | Add a tooltip someday */
+	cursor: pointer;
+	/* remove list marker */
+	list-style: none;
+}
+
+.passMojiContainer > li {
+	width: 18px;
+	font-size: 12pt;
+	text-align: center;
+	color: var(--clr-accent);
+}
+
+.monoMoji {
+	filter: grayscale(100%) brightness(125%);
+}
+
+/* --- Quick Settings */
+
+.quickSettingsContainer {
+	gap: 4vw;
+	flex-wrap: wrap;
+}
+
+/* --- Custom number inputs */
+/* Getting rid of the default + and - buttons */
+/* SO to https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* display: none;         <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /*             <-- Apparently some margin are still there even though it's hidden */
+}
+
+.numberSettingContainer > input[type="number"] {
+	height: 25px;
+	width: 88px;
+	text-align: center;
+	transition: 100ms;
+	/* Overwriting some default styling */
+	appearance: textfield; /* Standard */
+	-moz-appearance: textfield; /* Firefox */
+}
+
+.numberInputButton {
+	position: absolute;
+	height: 27px;
+	width: 27px;
+	background-color: transparent;
+	color: var(--clr-accent);
+	text-align: center;
+	border: none;
+	cursor: pointer;
+	/* if the actual number input gets focus it shoves itself infront of the buttons */
+	z-index: 2;
+}
+
+/* A bit hacky here but depending on minus or plus different stylings look better */
+.minus {
+	font-size: 20pt;
+	line-height: 25px;
+	margin-top: 1px;
+	margin-left: 2px;
+}
+
+.plus {
+	font-size: 16pt;
+	margin-top: 2.5px;
+	line-height: 25px;
+	/* This one physically hurts me */
+	transform: translateX(-107%);
+}
+
+/* --- */
+
+/* --- */
+
+.quickFilters {
+	display: flex;
+	width: 80%;
+	min-height: 25px;
+	border: var(--border);
+}
+
+.quickFilters > summary {
+	margin-left: 2vw;
+	margin-top: 2vw;
+	font-size: 10pt;
+	min-height: 25px;
+	outline: 0;
+	color: var(--clr-accent);
+}
+
+/* The help button */
+/* TODO | Add actual help overlay */
+.quickFilters > summary > button {
+	border: none;
+	background-color: transparent;
+	outline: 0;
+	color: var(--clr-accent);
+	cursor: pointer;
+}
+
+.filterContainer {
+	border-top: var(--border);
+	gap: 7vw;
+}
+
+/* Filter labels */
+.filterContainer > div > h3 {
+	color: var(--clr-accent);
+	font-weight: normal;
+	margin: 0;
+}
+
+/* --- Output */
+
+.outputContainer {
+	width: 100%;
+}
+
+/* Yes im using a input element as the output lol */
+.outputContainer > input {
+	width: 66%;
+	height: 25px;
+	cursor: copy;
+	font-family: monospace;
+}
+
+.outputContainer > button {
+	width: 31px;
+	background-color: transparent;
+	aspect-ratio: 1;
+	border: var(--border);
+	border-left: none;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.outputContainer > button > img {
+	filter: invert();
+	scale: 1.5;
+}
+
+/* --- */
+
+.footer {
+	height: 35px;
+	margin-top: -5px;
+	gap: 10vw;
+}
+
+.footer > a {
+	color: var(--clr-accent);
+	filter: brightness(80%);
+}
+
+/* --- Custom checkbox styling */
+
+.ctm-checkbox {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	background-color: var(--clr-background);
+	border: var(--border);
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	transition: 100ms;
+}
+
+.ctm-checkbox:checked::after {
+	content: "✔";
+	color: var(--clr-accent);
+	font-size: 20px;
+	position: absolute;
+	top: -6px;
+}
+
+/* --- Custom focus styles */
+
+.animated {
+
+.ctm-checkbox:hover, .ctm-checkbox:focus-visible {
+	scale: 1.1;
+	outline: none;
+}
+
+input[type="password"]:hover, input[type="password"]:focus-visible,
+input[type="text"]:hover, input[type="text"]:focus-visible {
+	scale: 1.04;
+	outline: none;
+}
+
+input[type=number]:hover, input[type=number]:focus-visible {
+	scale: 1.02;
+	outline: none;
+}
+
+.minus:hover, .minus:focus-visible, .plus:hover, .plus:focus-visible {
+	text-decoration: underline;
+	outline: none;
+}
+
+.minus:active, .plus:active {
+	text-decoration: none;
+}
+
+#toggleView:hover, #toggleView:focus-visible {
+	scale: 1.05;
+	outline: none;
+}
+
+#toggleView:active {
+	scale: 1.1;
+}
+
+details.quickFilters > summary:focus-visible {
+  text-decoration: underline;
+}
+
+.quickFilters > summary > button:focus-visible {
+	text-decoration: underline;
+}
+
+.footer > a:hover, .footer > a:focus-visible {
+	filter: brightness(110%);
+	outline: none;
+}
+
+}
+
+/* --- Utillity */
+
+.flex-side-side {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-top-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.nslct {
+	user-select: none;
+}

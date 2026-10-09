@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Lesserpass - Changelog</title>
+<script src="changelog.js" defer></script>
+<link rel="stylesheet" href="changelog.css">
+</head>
+<body>
+
+<pre id="markdown-content" contenteditable style="border:1px solid #ccc; padding:10px; min-height:150px; max-width:600px;">
+# 2.0.0 | Internal restructure
+## TODO: Added web version at lesserpass.org
+### As long as you can open a website you have access to your passwords
+## Added 2FA code generator
+### You can now replace Authy or similar with LesserPass!
+## TODO: Added new extension onboarding
+### Way better first install experience with settings and ui explained
+## TODO: Changed to a core based structure
+### This was needed to create the website and 2.0.0 of the extension
+### Various small changes and fixes
+
+
+## 1.2.0 | Big security improvements
+### New static secret that protects from screen capture reverse engineering and more
+### passMoji preview no longer updates every keystroke to harden the visul integrity
+## 1.0.1 | Polish
+### Small ui improvements
+### Implement debounce setting
+### Fix Settings population
+# 1.0.0 | First full release!
+### Redid settings page (modular now)
+### Added Setting for auto login generation
+### Added reset setting button
+### Bumped to 1.0.0 for first full release
+## 0.9.9 | Refactor
+### Ensuring categories at low length passwords
+### Added UI debounce to make stuff snappy
+### Added on the fly login generation
+### Added output filters
+### More reasonable default char set to support more sites
+### Improvements to code layout
+### Removing autofill
+### > will return with login and pass support
+## 0.9.8 | General cleanup
+### CSS and HTML cleanup
+## 0.9.7 | Added Changelog & Onboarding
+</pre>
+
+<div class="center">
+	<h4 class="title">Changelog</h4>
+	<details style="width: fit-content;">
+		<summary style="text-align: center;"><h4>Future / planned features (click)</h4></summary>
+		<h4>- Selfhosted settings sync server</h4>
+		<h4>- SITE PROFILES</h4>
+		<!-- Quick tangent on what a site profile is -->
+		<!-- defined by its domain.tld -->
+		<!-- stores settings (strip subdomain etc) -->
+		<!-- stores custom password regex rules -->
+		<!-- stores list of aliases (other domain.tld's) -->
+		<!-- stores pwdiff to allow for imported passwords (-> current imported password -+ profile + masterpassword generated one) -->
+		<!-- index offset (to "zero" a sites index) -->
+		<h4>- Google profile global settings sync option</h4>
+		<h4>- Fingerprint / hardwarekey support for master password (if i can, idk yet)</h4>
+		<h4>- Experimental "favicon hash as domain" setting</h4>
+		<h4>- Twitter mode (auto exchange x.com with twitter.com)</h4>
+		<h4>- Theme settings (main and accent color)</h4>
+		<h4>- Better debug logs (or any logs at all tbh)</h4>
+		<h4>- Add back autofill</h4>
+		<h4>- some way to change your master pw but keep the same output (
+			encrypt old mpw with new one and decrypt it internally? |
+			save only difference between old and new? -> could add up over time!
+		)</h4>
+		<h4>- Add password strength indication (maybe? idk)</h4>
+		<h4>- Add error feed back in ui</h4>
+		<h4>- Ui improvements (tool tips / screen reader compatibility)</h4>
+		<h4>- and if i manage to do the above thing, do 2FA codes too, just store them encrypted with the masterpw + static secret</h4>
+		<h4>- option to enforce these: https://github.com/apple/password-manager-resources/blob/main/quirks/password-rules.json</h4>
+		<h4>- better settings saved dialog</h4>
+		<h4>- web version ASAP</h4>
+	</details>
+	<div class="chglg-container" id="output"></div>
+</div>
+</body>
+</html>
