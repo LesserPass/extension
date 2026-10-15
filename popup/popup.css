@@ -111,7 +111,6 @@ body {
   height: 100%;
   width: 100%;
   align-items: center;
-    transition: .15s linear;
 
 	box-shadow: inset -40vw 0px 0 0px white;
 
@@ -137,7 +136,7 @@ body {
 
 
 .funcToggle label:after {
-  content: "2FA";
+  content: "MFA";
   position: absolute;
   left: 50%;
   width: 50%;
@@ -430,6 +429,10 @@ details.quickFilters > summary:focus-visible {
 	outline: none;
 }
 
+.funcToggle label{
+	transition: .15s linear;
+}
+
 }
 
 /* --- Utillity */
@@ -450,3 +453,7 @@ details.quickFilters > summary:focus-visible {
 .nslct {
 	user-select: none;
 }
+
+/* .noAnim {
+	transition: none !important;
+} */
