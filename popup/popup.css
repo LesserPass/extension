@@ -2,10 +2,10 @@
 	/* --- Window */
 	/* TODO | Switch width to rem units later lol */
 	--window-width: 250px;
-	--gap-vert: 0.7rem;
+	--gap-vert: 0.6rem;
 	/* --- Colors */
 	--clr-background: black;
-	--clr-accent: red;
+	--clr-accent: white;
 	--border: 2px solid var(--clr-accent);
 	/* --- Fonts */
 	--font-overlay-size: 3.5rem;
@@ -38,6 +38,7 @@ body {
 
 #copyOverlay {
 	position: absolute;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -70,28 +71,6 @@ body {
 	text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* --- Tab toggle */
 
 .tabToggle {
@@ -104,7 +83,7 @@ body {
 	border: var(--border);
 }
 
-.tabToggle input {
+.tabToggle > input {
 	position: absolute;
 	z-index: 10;
 	width: 100%;
@@ -114,7 +93,7 @@ body {
 	opacity: 0;
 }
 
-.tabToggle label {
+.tabToggle > label {
 	position: relative;
 	display: flex;
 	height: 100%;
@@ -123,7 +102,7 @@ body {
 	box-shadow: inset -6rem 0px 0 0px var(--clr-accent);
 }
 
-.tabToggle label:before  , .tabToggle label:after {
+.tabToggle > label:before  , .tabToggle > label:after {
 	font-size: var(--font-tabSwitch-size);
 	font-weight: bold;
 	font-family:arial;
@@ -135,7 +114,7 @@ body {
 	justify-content: center;
 }
 
-.tabToggle label:before {
+.tabToggle > label:before {
 	content: "PASS";
 	color: var(--clr-accent);
 	height: var(--layout-slab-height);
@@ -143,7 +122,7 @@ body {
 	display: inline-flex;
 }
 
-.tabToggle label:after {
+.tabToggle > label:after {
 	content: "MFA";
 	position: absolute;
 	left: 50%;
@@ -152,14 +131,14 @@ body {
 	color: var(--clr-background);
 }
 
-.tabToggle input[type="checkbox"]:checked + label {
+.tabToggle > input[type="checkbox"]:checked + label {
     box-shadow: inset 6rem 0px 0 0px var(--clr-accent);
 }
 
-.tabToggle input[type="checkbox"]:checked + label:before {
+.tabToggle > input[type="checkbox"]:checked + label:before {
 	color: var(--clr-background);
 }
-.tabToggle input[type="checkbox"]:checked + label:after {
+.tabToggle > input[type="checkbox"]:checked + label:after {
 	color: var(--clr-accent);
 }
 
@@ -168,86 +147,87 @@ body {
 
 
 
+#passTab {
+	gap: var(--gap-vert);
+}
 
+/* --- Site and login input */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* User inputs */
-
-/* General styling */
-input[type="text"],input[type="password"],input[type="number"] {
+#passTab > #site, #passTab > #login {
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
+	width: var(--layout-slab-width);
 	background-color: var(--clr-background);
 	color: var(--clr-accent);
 	border: var(--border);
+	padding: 0.3rem;
 }
 
-.userInputsContainer {
-	gap: 4vw;
+/* Master password input */
+
+.passwordInput {
+	width: var(--layout-slab-width);
+	height: var(--layout-slab-height);
 }
 
-.userInputsContainer > input[type="text"] {
-	height: 25px;
-	width: 80%;
-	transition: 100ms;
-}
-
-.passwordEntry {
-	width: 82%;
-}
-
-.passwordEntry > input[type="password"],
-.passwordEntry > input[type="text"] {
-	height: 25px;
-	width: 82%;
-	transition: 100ms;
+#masterpw {
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
+	width: 65%;
+	color: var(--clr-accent);
+	background-color: var(--clr-background);
+	border: var(--border);
+	padding: 0.3rem;
 }
 
 /* --- Password feedback (emojis) */
 
-.passMojiContainer {
-	margin: 0;
-	padding: 0;
-	height: 27px;
-	width: 90px;
-	gap: 1vw;
+#passMojiContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
+	width: 35%;
 	border: var(--border);
+	/* The masterpassword has a border an all 4 sides. this prevents a double border where they meet */
 	border-left: 0;
-	/* Indicate the hidden feature that clicking will toggle masterpw visibillity */
-	/* TODO | Add a tooltip someday */
+	padding: 0;
+	margin: 0;
+	/* TODO | Add a (custom) tooltip someday that tells the user that you can toggle vis by clicking */
 	cursor: pointer;
 	/* remove list marker */
 	list-style: none;
 }
 
-.passMojiContainer > li {
-	width: 18px;
-	font-size: 12pt;
+#passMojiContainer > li {
+	width: 1.35rem;
+	font-size: 1.1rem;
+	line-height: 1.1rem;
 	text-align: center;
 	color: var(--clr-accent);
 }
 
-.monoMoji {
-	filter: grayscale(100%) brightness(125%);
+/* --- Quick settings (Numbers) */
+
+.quickNumbers {
+	width: var(--layout-slab-width);
+	height: var(--layout-slab-height);
+	display: flex;
+	justify-content: space-between;
 }
 
-/* --- Quick Settings */
-
-.quickSettingsContainer {
-	gap: 4vw;
-	flex-wrap: wrap;
+.numberSettingContainer > input[type="number"] {
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
+	width: 5.8rem;
+	text-align: center;
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	border: var(--border);
+	/* Overwriting some default styling */
+	appearance: textfield; /* Standard */
+	-moz-appearance: textfield; /* Firefox */
 }
 
 /* --- Custom number inputs */
@@ -260,115 +240,183 @@ input::-webkit-inner-spin-button {
 	margin: 0; /*             <-- Apparently some margin are still there even though it's hidden */
 }
 
-.numberSettingContainer > input[type="number"] {
-	height: 25px;
-	width: 88px;
-	text-align: center;
-	transition: 100ms;
-	/* Overwriting some default styling */
-	appearance: textfield; /* Standard */
-	-moz-appearance: textfield; /* Firefox */
-}
-
 .numberInputButton {
 	position: absolute;
-	height: 27px;
-	width: 27px;
+	height: var(--layout-slab-height);
+	width: var(--layout-slab-height);
 	background-color: transparent;
 	color: var(--clr-accent);
 	text-align: center;
 	border: none;
+	margin: 0;
 	cursor: pointer;
 	/* if the actual number input gets focus it shoves itself infront of the buttons */
 	z-index: 2;
+	/* filter: blur(3px); */
 }
 
-/* A bit hacky here but depending on minus or plus different stylings look better */
-.minus {
-	font-size: 20pt;
-	line-height: 25px;
-	margin-top: 1px;
-	margin-left: 2px;
+/*
+These are the 2 worst rules in the entire project
+It looks like shit if i dont do custom stuff for font size and location
+ */
+.numberInputButton.minus {
+	font-size: 1.5rem;
 }
 
-.plus {
-	font-size: 16pt;
-	margin-top: 2.5px;
-	line-height: 25px;
-	/* This one physically hurts me */
-	transform: translateX(-107%);
+.numberInputButton.plus {
+	font-size: 1.3rem;
+	transform: translateX(-105%);
 }
 
-/* --- */
-
-/* --- */
+/* --- Quick settings (Filters) */
 
 .quickFilters {
 	display: flex;
-	width: 80%;
-	min-height: 25px;
+	justify-content: left;
+	box-sizing: border-box;
+	width: var(--layout-slab-width);
+	min-height: var(--layout-slab-height);
 	border: var(--border);
 }
 
-.quickFilters > summary {
-	margin-left: 2vw;
-	margin-top: 2vw;
-	font-size: 10pt;
-	min-height: 25px;
-	outline: 0;
-	color: var(--clr-accent);
+.quickFilters:open {
+	flex-direction: column;
 }
 
-/* The help button */
-/* TODO | Add actual help overlay */
-.quickFilters > summary > button {
-	border: none;
-	background-color: transparent;
+.quickFilters > summary {
+	margin-left: 0.7rem;
+	margin-top: 0.35rem;
+	font-size: 0.8rem;
+	min-height: 1.55rem;
 	outline: 0;
 	color: var(--clr-accent);
-	cursor: pointer;
 }
 
 .filterContainer {
+	/* In this case there would be NO border without this (similar to the double border issue) */
 	border-top: var(--border);
-	gap: 7vw;
+	display: flex;
+	justify-content: space-evenly;
 }
 
 /* Filter labels */
 .filterContainer > div > h3 {
 	color: var(--clr-accent);
 	font-weight: normal;
+	font-size: 1rem;
 	margin: 0;
 }
+
+/* --- Custom checkbox styling */
+
+.ctm-checkbox {
+	appearance: none;
+	box-sizing: border-box;
+	height: 1.3rem;
+	aspect-ratio: 1;
+	background-color: var(--clr-background);
+	border: var(--border);
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.ctm-checkbox:checked::after {
+	content: "✔";
+	color: var(--clr-accent);
+	font-size: 1.5rem;
+	line-height: 1.2rem;
+	aspect-ratio: 1;
+	position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- Output */
 
 .outputContainer {
-	width: 100%;
+	width: var(--layout-slab-width);
 }
 
 /* Yes im using a input element as the output lol */
 .outputContainer > input {
-	width: 66%;
-	height: 25px;
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
+	width: calc(var(--layout-slab-width) - var(--layout-slab-height));
 	cursor: copy;
 	font-family: monospace;
+	border: var(--border);
+	background-color: var(--clr-background);
+	color: var(--clr-accent);
+	padding: 0.3rem;
 }
 
 .outputContainer > button {
-	width: 31px;
-	background-color: transparent;
+	box-sizing: border-box;
+	height: var(--layout-slab-height);
 	aspect-ratio: 1;
+	background-color: transparent;
 	border: var(--border);
 	border-left: none;
 	cursor: pointer;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .outputContainer > button > img {
 	filter: invert();
 	scale: 1.5;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- */
 
@@ -383,97 +431,17 @@ input::-webkit-inner-spin-button {
 	filter: brightness(80%);
 }
 
-/* --- Custom checkbox styling */
-
-.ctm-checkbox {
-	appearance: none;
-	width: 20px;
-	height: 20px;
-	background-color: var(--clr-background);
-	border: var(--border);
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	transition: 100ms;
-}
-
-.ctm-checkbox:checked::after {
-	content: "✔";
-	color: var(--clr-accent);
-	font-size: 20px;
-	position: absolute;
-	top: -6px;
-}
-
-/* --- Custom focus styles */
-
-.animated {
-
-.ctm-checkbox:hover, .ctm-checkbox:focus-visible {
-	scale: 1.1;
-	outline: none;
-}
-
-input[type="password"]:hover, input[type="password"]:focus-visible,
-input[type="text"]:hover, input[type="text"]:focus-visible {
-	scale: 1.04;
-	outline: none;
-}
-
-input[type=number]:hover, input[type=number]:focus-visible {
-	scale: 1.02;
-	outline: none;
-}
-
-.minus:hover, .minus:focus-visible, .plus:hover, .plus:focus-visible {
-	text-decoration: underline;
-	outline: none;
-}
-
-.minus:active, .plus:active {
-	text-decoration: none;
-}
-
-#toggleView:hover, #toggleView:focus-visible {
-	scale: 1.05;
-	outline: none;
-}
-
-#toggleView:active {
-	scale: 1.1;
-}
-
-details.quickFilters > summary:focus-visible {
-  text-decoration: underline;
-}
-
-.quickFilters > summary > button:focus-visible {
-	text-decoration: underline;
-}
-
-.footer > a:hover, .footer > a:focus-visible {
-	filter: brightness(110%);
-	outline: none;
-}
-
-.tabToggle label{
-	transition: .15s linear;
-}
-
-}
 
 /* --- Utillity */
 
 .flex-side-side {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
 .flex-top-bottom {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	flex-direction: column;
 }
 
@@ -485,3 +453,25 @@ details.quickFilters > summary:focus-visible {
 .hideThisTab {
 	display: none !important;
 }
+
+
+
+/* .tooltip {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 210px;
+	left: 20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	backdrop-filter: blur(5px);
+	color: white;
+	width: fit-content;
+	border: var(--border);
+	z-index: var(--infinity);
+	height: var(--layout-slab-height);
+	padding-left: 5px;
+	padding-right: 5px;
+} */
