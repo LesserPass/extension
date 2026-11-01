@@ -1,78 +1,73 @@
 :root {
+	/* --- Window */
+	/* TODO | Switch width to rem units later lol */
 	--window-width: 250px;
-	--window-height: 320px;
-	/* --- */
+	--gap-vert: 0.7rem;
+	/* --- Colors */
 	--clr-background: black;
-	--clr-accent: white;
-	/* --- */
-	--title-size: 28pt;
+	--clr-accent: red;
 	--border: 2px solid var(--clr-accent);
-	--overlay-transparency: 0.7
+	/* --- Fonts */
+	--font-overlay-size: 3.5rem;
+	--font-title-size: 2.65rem;
+	--font-tabSwitch-size: 1.3rem;
+	/* --- Overlay */
+	--overlay-transparency: 0.7;
+	/* --- Layout */
+	--layout-slab-height: 2.2rem;
+	--layout-slab-width: 12.9rem;
+	/* --- Util */
+	--infinity: calc(infinity);
 }
 
-/* --- General window styling */
-
 html {
-	width: var(--window-width);
-	height: var(--window-heighth);
+	min-width: var(--window-width);
+	max-width: var(--window-width);
+	/* If something goes wrong and its red its easier to debug */
+	background-color: red;
 }
 
 body {
+	gap: var(--gap-vert);
 	margin: 0;
 	background-color: var(--clr-background);
 	border: var(--border)
 }
 
-.hideThisTab {
-	display: none !important;
-	visibility: hidden !important;
-}
-
 /* --- Overlay */
 
-.overlay {
+#copyOverlay {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
+	top: 0;
+	left: 0;
 	background-color: hsla(0, 0%, 0%, var(--overlay-transparency));
 	/* Always on top */
-	z-index: 999;
-}
-
-.hidden {
+	z-index: var(--infinity);
+	/* Hidden initially */
 	visibility: hidden;
 }
 
-.overlay > h1 {
+#copyOverlay > h1 {
 	color:var(--clr-accent);
-	font-size: 18vw;
+	font-size: var(--font-overlay-size);
 }
 
 
 /* --- Header */
 
 .header {
+	box-sizing: border-box;
 	width: 100%;
-	height: 20%;
-	gap: 3vw;
-	padding-top: 4vw;
-	padding-bottom: 4vw;
-}
-
-.header > img {
-	height: calc(var(--title-size) + 5px);
-	margin: 0;
-
-	/* This is a sin but it looks so much better */
-	transform: translateY(2px);
+	height: 30%;
 }
 
 .header > h2 {
-	font-size: var(--title-size);
+	font-size: var(--font-title-size);
 	color: var(--clr-accent);
 	margin: 0;
+	text-decoration: underline;
 }
 
 
@@ -85,75 +80,107 @@ body {
 
 
 
-.funcToggle {
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Tab toggle */
+
+.tabToggle {
 	position: relative;
-	height: 27px;
+	box-sizing: border-box;
 	display: flex;
-	/* align-items: center; */
-	width: 82%;
-	left: 50%;
-	transform: translateX(-50%);
+	height: var(--layout-slab-height);
+	width: var(--layout-slab-width);
+	/* Border and gap */
 	border: var(--border);
-	margin-bottom: 4vw;
 }
-.funcToggle input[type="checkbox"] {
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  margin: 0;
-  opacity: 0;
-}
-.funcToggle label {
-  position: relative;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
 
-	box-shadow: inset -40vw 0px 0 0px white;
-
+.tabToggle input {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	margin: 0;
+	opacity: 0;
 }
-.funcToggle label:before  , .funcToggle label:after {
-  font-size: 19px;
-  font-weight: bold;
-  font-family:arial;
-  transition: 0.2s ease-in;
-  box-sizing:border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.funcToggle label:before {
 
+.tabToggle label {
+	position: relative;
+	display: flex;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+	box-shadow: inset -6rem 0px 0 0px var(--clr-accent);
+}
+
+.tabToggle label:before  , .tabToggle label:after {
+	font-size: var(--font-tabSwitch-size);
+	font-weight: bold;
+	font-family:arial;
+	/* TODO | Prob move this to the .animated class */
+	transition: 0.2s ease-in;
+	box-sizing:border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tabToggle label:before {
 	content: "PASS";
-	color: white;
-	height: 27px;
+	color: var(--clr-accent);
+	height: var(--layout-slab-height);
 	width: 50%;
 	display: inline-flex;
 }
 
-
-.funcToggle label:after {
-  content: "MFA";
-  position: absolute;
-  left: 50%;
-  width: 50%;
-  line-height: 27px;
-  color: black;
+.tabToggle label:after {
+	content: "MFA";
+	position: absolute;
+	left: 50%;
+	width: 50%;
+	line-height: var(--layout-slab-height);
+	color: var(--clr-background);
 }
 
-.funcToggle input[type="checkbox"]:checked + label {
-    box-shadow: inset 40vw 0px 0 0px white;
+.tabToggle input[type="checkbox"]:checked + label {
+    box-shadow: inset 6rem 0px 0 0px var(--clr-accent);
 }
 
-.funcToggle input[type="checkbox"]:checked + label:before {
-	color: black;
+.tabToggle input[type="checkbox"]:checked + label:before {
+	color: var(--clr-background);
 }
-.funcToggle input[type="checkbox"]:checked + label:after {
-	color: white;
+.tabToggle input[type="checkbox"]:checked + label:after {
+	color: var(--clr-accent);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -429,7 +456,7 @@ details.quickFilters > summary:focus-visible {
 	outline: none;
 }
 
-.funcToggle label{
+.tabToggle label{
 	transition: .15s linear;
 }
 
@@ -454,6 +481,7 @@ details.quickFilters > summary:focus-visible {
 	user-select: none;
 }
 
-/* .noAnim {
-	transition: none !important;
-} */
+
+.hideThisTab {
+	display: none !important;
+}

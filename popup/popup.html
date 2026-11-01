@@ -7,20 +7,18 @@
 		<link rel="stylesheet" href="popup.css">
 		<script src="popup.js" defer></script>
 	</head>
-	<body>
-		<!-- Overlay -->
-		<div id="copiedOverlay" class="overlay hidden flex-top-bottom nslct">
+	<body class="flex-top-bottom">
+		<!-- Overlay -- copied -->
+		<div id="copyOverlay" class="flex-top-bottom nslct">
 			<h1>Copied!</h1>
 		</div>
-		<!-- Title Section -->
-		<div class="header flex-side-side nslct">
-			<img src="../assets/icon.svg"
-				alt="A key with a striked through eye in its bow."
-				>
+		<!-- Header -->
+		<div class="header flex-top-bottom nslct">
 			<h2>LesserPass</h2>
 		</div>
-		<div class="funcToggle">
-			<input id="tabSwitcher" type="checkbox"/>
+		<div class="tabToggle">
+			<input id="tabToggleInput" type="checkbox"/>
+			<!-- This element is used to create the toggle switch effect using shadow bs -->
 			<label></label>
 		</div>
 		<div id="passTab" class="userInputsContainer flex-top-bottom">
@@ -46,7 +44,7 @@
 					<button class="numberInputButton plus" id="plusIndex">+</button>
 				</div>
 
-				<details class="quickFilters">
+				<details class="quickFilters flex-top-bottom">
 					<summary>
 						Open filters
 					</summary>
@@ -77,11 +75,16 @@
 			<div class="flex-top-bottom">
 				<ol class="mfaList">
 					<li class="mfaItem flex-side-side">
-							<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico" style="max-height: 16px; aspect-ratio: 1;" alt="" class="mfaFavicon">
-							<h3 class="mfalabel">Github</h3>
-							<button class="copybutton">[COPY]</button>
+							<details>
+								<summary>
+									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico" style="max-height: 16px; aspect-ratio: 1;" alt="" class="mfaFavicon">
+									<h3 class="mfalabel">Github</h3>
+								</summary>
+								<button class="copybutton">[COPY]</button>
+							</details>
 					</li>
 				</ol>
+				<button class="addMFA">ADD</button>
 			</div>
 		</div>
 		<div class="footer flex-side-side">

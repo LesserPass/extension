@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const SETTINGS = await loadSettings()
 
 	// load all elements first
-	const EL_overlay = document.getElementById("copiedOverlay");
+	const EL_overlay = document.getElementById("copyOverlay");
 	const EL_site = document.getElementById("site");
 	const EL_login = document.getElementById("login");
 	const EL_masterpw = document.getElementById("masterpw");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 	const EL_passTab = document.getElementById("passTab")
 	const EL_mfaTab = document.getElementById("mfaTab")
-	const EL_tabSwitch = document.getElementById("tabSwitcher")
+	const EL_tabToggleInput = document.getElementById("tabToggleInput")
 
 	// --- Fill UI with values
 
@@ -156,8 +156,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 	});
 
 	// Tab switcher logic
-	EL_tabSwitch.addEventListener("change", () => {
-		if (EL_tabSwitch.checked) {
+	EL_tabToggleInput.addEventListener("change", (e) => {
+		// TODO | If left side is clicked always show pass tab, if right MFA.
+		if (EL_tabToggleInput.checked) {
 			EL_passTab.classList.add("hideThisTab")
 			EL_mfaTab.classList.remove("hideThisTab")
 		} else {
