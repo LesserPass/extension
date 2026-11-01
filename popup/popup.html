@@ -17,7 +17,7 @@
 		<div class="header flex-top-bottom nslct">
 			<h2>LesserPass</h2>
 		</div>
-		<div class="tabToggle">
+		<div class="tabToggle nslct">
 			<input id="tabToggleInput" type="checkbox"/>
 			<!-- This element is used to create the toggle switch effect using shadow bs -->
 			<label></label>
@@ -37,17 +37,17 @@
 
 			<div class="quickNumbers">
 				<div class="numberSettingContainer">
-					<button class="numberInputButton minus" id="minusLength">-</button>
+					<button class="numberInputButton minus nslct" id="minusLength">-</button>
 					<input id="LengthInput" type="number" min="1" placeholder="Length">
-					<button class="numberInputButton plus" id="plusLength">+</button>
+					<button class="numberInputButton plus nslct" id="plusLength">+</button>
 				</div>
 				<div class="numberSettingContainer">
-					<button class="numberInputButton minus" id="minusIndex">-</button>
+					<button class="numberInputButton minus nslct" id="minusIndex">-</button>
 					<input id="IndexInput" type="number" min="1" placeholder="Index">
-					<button class="numberInputButton plus" id="plusIndex">+</button>
+					<button class="numberInputButton plus nslct" id="plusIndex">+</button>
 				</div>
 			</div>
-			<details class="quickFilters">
+			<details class="quickFilters nslct">
 				<summary>
 					Open filters
 				</summary>
@@ -68,7 +68,7 @@
 			</details>
 			<div class="outputContainer flex-side-side">
 				<input title="Click to copy" id="output" type="password" readonly>
-				<button id="toggleView" class="flex-top-bottom">
+				<button id="toggleView" class="flex-top-bottom nslct">
 					<img id="toggleViewImage" src="../assets/icons/eye.svg" alt="Toggle View">
 				</button>
 			</div>
@@ -90,16 +90,37 @@
 		<!-- --- -->
 		<div id="mfaTab" class="flex-top-bottom hideThisTab">
 			<div class="flex-top-bottom">
-				<ol class="mfaList">
-					<li class="mfaItem flex-side-side">
+				<input type="password" id="decryptMFAInput" placeholder="Enter Master password to decrypt keys">
+				<ol id="mfaList">
+
+
+					<li class="mfaItem">
 							<details>
 								<summary>
-									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico" style="max-height: 16px; aspect-ratio: 1;" alt="" class="mfaFavicon">
+									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico"
+										style="max-height: 16px; aspect-ratio: 1;"
+										alt="" class="mfaFavicon">
 									<h3 class="mfalabel">Github</h3>
 								</summary>
-								<button class="copybutton">[COPY]</button>
+								<button class="copybutton">
+									<img src="../assets/icons/copy.svg" alt="">
+								</button>
 							</details>
 					</li>
+					<li class="mfaItem">
+							<details>
+								<summary>
+									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico"
+										style="max-height: 16px; aspect-ratio: 1;"
+										alt="" class="mfaFavicon">
+									<h3 class="mfalabel">Github</h3>
+								</summary>
+								<button class="copybutton">
+									<img src="../assets/icons/copy.svg" alt="">
+								</button>
+							</details>
+					</li>
+
 				</ol>
 				<button class="addMFA">ADD</button>
 			</div>
@@ -116,9 +137,9 @@
 
 
 
-		<div class="footer flex-side-side">
+		<div class="footer flex-side-side nslct">
 			<a href="../settings/settings.html" target="_blank">Settings</a>
-			<a id="version" href="../changelog/changelog.html" target="_blank">v</a>
+			<a id="version" href="../changelog/changelog.html" target="_blank">{version}</a>
 			<a href="https://github.com/Xeimyn/LesserPass" target="_blank">Source</a>
 		</div>
 	</body>

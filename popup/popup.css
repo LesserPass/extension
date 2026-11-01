@@ -142,10 +142,7 @@ body {
 	color: var(--clr-accent);
 }
 
-
-
-
-
+/* --- Password Tab */
 
 #passTab {
 	gap: var(--gap-vert);
@@ -161,6 +158,10 @@ body {
 	color: var(--clr-accent);
 	border: var(--border);
 	padding: 0.3rem;
+}
+
+#site::placeholder, #login::placeholder, #masterpw::placeholder {
+	user-select: none;
 }
 
 /* Master password input */
@@ -330,32 +331,6 @@ It looks like shit if i dont do custom stuff for font size and location
 	position: absolute;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* --- Output */
 
 .outputContainer {
@@ -409,6 +384,28 @@ It looks like shit if i dont do custom stuff for font size and location
 
 
 
+/* --- MFA Tab */
+
+#mfaList {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: red;
+	width: var(--window-width);
+	/* roughly the same size as passtab - good enough */
+	height: calc(4 * var(--layout-slab-height) + 3 * var(--gap-vert) - 0.1rem);
+	overflow-y: scroll;
+	gap: var(--gap-vert);
+}
+
+.mfaItem {
+	list-style: none;
+	background-color: green;
+	box-sizing: border-box;
+	width: var(--layout-slab-width);
+	height: var(--layout-slab-height);
+	border: var(--border);
+}
 
 
 
@@ -418,12 +415,18 @@ It looks like shit if i dont do custom stuff for font size and location
 
 
 
-/* --- */
+
+
+
+
+
+
+/* --- Footer */
 
 .footer {
-	height: 35px;
-	margin-top: -5px;
-	gap: 10vw;
+	height: var(--layout-slab-height);
+	margin-top: -0.8rem;
+	gap: 2rem;
 }
 
 .footer > a {
@@ -432,7 +435,7 @@ It looks like shit if i dont do custom stuff for font size and location
 }
 
 
-/* --- Utillity */
+/* --- Util */
 
 .flex-side-side {
 	display: flex;
