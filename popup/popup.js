@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const EL_filterCaps = document.getElementById("filterCaps")
 	const EL_filterNumbers = document.getElementById("filterNumbers")
 	const EL_filterSymbols = document.getElementById("filterSymbols")
-	const EL_output = document.getElementById("output");
+	const EL_pwOutput = document.getElementById("pwOutput");
 	const EL_toggleView = document.getElementById("toggleView");
 	const EL_toggleViewImg = document.getElementById("toggleViewImage");
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 		EL_filterCaps,
 		EL_filterNumbers,
 		EL_filterSymbols,
-		EL_output,
+		EL_pwOutput,
 		EL_passMojis
 	), SETTINGS.advanced.debounceDelay);
 
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			// 	})
 
 			// } else {
-				copyToClipboard(EL_output.value,EL_overlay,SETTINGS);
+				copyToClipboard(EL_pwOutput.value,EL_overlay,SETTINGS);
 			// }
 		}
 	});
@@ -142,13 +142,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 	// View / Hide output pw
 	EL_toggleView.addEventListener("click", () => {
-		const isPasswordType = EL_output.type === "password";
-		EL_output.type = isPasswordType ? "text" : "password";
+		const isPasswordType = EL_pwOutput.type === "password";
+		EL_pwOutput.type = isPasswordType ? "text" : "password";
 		EL_toggleViewImg.src = isPasswordType ? "../assets/icons/eye_blind.svg" : "../assets/icons/eye.svg";
 	});
 
 	// Click to copy
-	EL_output.addEventListener("click", () => copyToClipboard(EL_output.value,EL_overlay,SETTINGS));
+	EL_pwOutput.addEventListener("click", () => copyToClipboard(EL_pwOutput.value,EL_overlay,SETTINGS));
 
 	// Let the user dismiss the overlay by clicking it
 	EL_overlay.addEventListener("click", () => {

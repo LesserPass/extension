@@ -67,7 +67,7 @@
 				</div>
 			</details>
 			<div class="outputContainer flex-side-side">
-				<input title="Click to copy" id="output" type="password" readonly>
+				<input title="Click to copy" id="pwOutput" type="password" readonly>
 				<button id="toggleView" class="flex-top-bottom nslct">
 					<img id="toggleViewImage" src="../assets/icons/eye.svg" alt="Toggle View">
 				</button>
@@ -89,41 +89,29 @@
 
 		<!-- --- -->
 		<div id="mfaTab" class="flex-top-bottom hideThisTab">
-			<div class="flex-top-bottom">
-				<input type="password" id="decryptMFAInput" placeholder="Enter Master password to decrypt keys">
-				<ol id="mfaList">
+				<!-- prob add passmoji stuff to this one again -->
+				<input type="password" id="decryptMFAInput" placeholder="Enter password to decrypt">
+				<ul id="mfaList">
 
-
-					<li class="mfaItem">
+					<li class="mfaEntry">
 							<details>
-								<summary>
-									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico"
+								<summary id="mfaTimerDiv">
+									<img src="https://icons.duckduckgo.com/ip3/github.com.ico"
 										style="max-height: 16px; aspect-ratio: 1;"
-										alt="" class="mfaFavicon">
-									<h3 class="mfalabel">Github</h3>
+										alt="github.com" class="mfaIcon">
+									<h3 class="mfaLabel">Github (user defined)</h3>
 								</summary>
-								<button class="copybutton">
-									<img src="../assets/icons/copy.svg" alt="">
-								</button>
-							</details>
-					</li>
-					<li class="mfaItem">
-							<details>
-								<summary>
-									<img loading="lazy" src="https://icons.duckduckgo.com/ip3/github.com.ico"
-										style="max-height: 16px; aspect-ratio: 1;"
-										alt="" class="mfaFavicon">
-									<h3 class="mfalabel">Github</h3>
-								</summary>
+								<input type="text" id="mfaOutput" readonly>
+								<!-- ideally id  show the next valid code but idk where ui wise :c -->
+								 <!-- Idea: instead just add a setting to cut off old codes early. If the code has XYZ seconds of being valid left show the next one -->
 								<button class="copybutton">
 									<img src="../assets/icons/copy.svg" alt="">
 								</button>
 							</details>
 					</li>
 
-				</ol>
+				</ul>
 				<button class="addMFA">ADD</button>
-			</div>
 		</div>
 
 
